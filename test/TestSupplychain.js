@@ -206,19 +206,21 @@ contract('SupplyChain', function(accounts) {
         const supplyChain = await SupplyChain.deployed()
         
         // Declare and Initialize a variable for event
-        
+        let eventEmitted = false
         
         // Watch the emitted event Purchased()
-        
+        supplyChain.getPastEvents('Purchased').then(e => eventEmitted = true)
 
         // Mark an item as Sold by calling function buyItem()
-        
+        await supplyChain.purchaseItem(upc, { from: consumerID })
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
-        
+        const resultBufferTwo = await supplyChain.fetchItemBufferTwo.call(upc)
 
         // Verify the result set
-        
+        assert.equal(resultBufferTwo[5], 7, 'Error: Invalid item state')
+        assert.equal(resultBufferTwo[8], consumerID, 'Error: Invalid owner')
+        assert.equal(eventEmitted, true, 'Error: Invalid event emitted')
     })    
 
     // 9th Test
