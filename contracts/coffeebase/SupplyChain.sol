@@ -260,7 +260,7 @@ contract SupplyChain {
   // Access Control List enforced by calling Smart Contract / DApp
   {
     // Update the appropriate fields - ownerID, retailerID, itemState
-    Item memory item = items[_upc];
+    Item storage item = items[_upc];
     item.ownerID = msg.sender;
     item.retailerID = msg.sender;
     item.itemState = State.Received;
