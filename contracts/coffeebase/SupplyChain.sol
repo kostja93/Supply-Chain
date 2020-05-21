@@ -228,7 +228,7 @@ contract SupplyChain {
   checkValue(_upc)
   {
     // Update the appropriate fields - ownerID, distributorID, itemState
-    Item memory item = items[_upc];
+    Item storage item = items[_upc];
     item.ownerID = msg.sender;
     item.distributorID = msg.sender;
     item.itemState = State.Sold;

@@ -140,20 +140,22 @@ contract('SupplyChain', function(accounts) {
         const supplyChain = await SupplyChain.deployed()
         
         // Declare and Initialize a variable for event
-        
+        let eventEmitted = true
         
         // Watch the emitted event Sold()
-        var event = supplyChain.Sold()
+        supplyChain.getPastEvents('Sold').then(e => eventEmitted = true)
         
 
         // Mark an item as Sold by calling function buyItem()
-        
+        await supplyChain.buyItem(upc, { from: distributorID, value: web3.utils.toWei('1', 'ether') })
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
-        
+        const resultBufferTwo = await supplyChain.fetchItemBufferTwo.call(upc)
 
         // Verify the result set
-        
+        assert.equal(resultBufferTwo[5], 4, 'Error: Invalid item State');
+        assert.equal(resultBufferTwo[6], distributorID, 'Error: Invalid distributor address')
+        assert.equal(eventEmitted, true, 'Invalid event emitted')
     })    
 
     // 6th Test
