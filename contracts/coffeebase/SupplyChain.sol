@@ -209,7 +209,7 @@ contract SupplyChain {
   verifyCaller(items[_upc].ownerID)
   {
     // Update the appropriate fields
-    Item memory item = items[_upc];
+    Item storage item = items[_upc];
     item.itemState = State.ForSale;
     item.productPrice = _price;
     // Emit the appropriate event
