@@ -2,7 +2,7 @@
 
 - The contract address: [0x9c3667C506D0e10B9b4C879115Eda4409b324333](https://rinkeby.etherscan.io/address/0x9c3667c506d0e10b9b4c879115eda4409b324333)
 - No external libraries where used, only the internal Roles library
-- IPFS address of DApp: 
+- IPFS address of DApp: [dapp](https://ipfs.io/ipfs/QmX9M9EdR8kbPA9ic9HAkpmHNyAAKGB3gYkKEeJUBHwdxJ/dapp)
 - Truffle v5.1.24 (core: 5.1.24)
 - Solidity v0.5.16 (solc-js)
 - Node v12.16.3
