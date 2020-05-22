@@ -14,6 +14,12 @@
 
 ## Sequence Diagram
 
+![Sequence Diagram](https://github.com/kostja93/Supply-Chain/blob/master/doc/Supply-Chain-State.png)
+
 ## State Diagram
 
+![State Diagram](https://github.com/kostja93/Supply-Chain/blob/master/doc/Supply-Chain-State.png)
+
 ## Class (Data Model)
+
+![Class Diagram](https://github.com/kostja93/Supply-Chain/blob/master/doc/Supply-Chain-Class.png)
