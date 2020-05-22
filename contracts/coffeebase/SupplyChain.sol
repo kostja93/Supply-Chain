@@ -149,7 +149,7 @@ contract SupplyChain is Ownable, DistributorRole, ConsumerRole, RetailerRole, Fa
   }
 
   // Define a function 'harvestItem' that allows a farmer to mark an item 'Harvested'
-  function harvestItem(uint _upc, address payable _originFarmerID, string memory _originFarmName, string memory _originFarmInformation, string memory  _originFarmLatitude, string memory  _originFarmLongitude, string memory  _productNotes) public 
+  function harvestItem(uint _upc, address payable _originFarmerID, string memory _originFarmName, string memory _originFarmInformation, string memory  _originFarmLatitude, string memory  _originFarmLongitude, string memory  _productNotes) public onlyFarmer()
   {
     // Add the new item as part of Harvest
     Item memory item;
@@ -177,6 +177,7 @@ contract SupplyChain is Ownable, DistributorRole, ConsumerRole, RetailerRole, Fa
   harvested(_upc)
   // Call modifier to verify caller of this function
   verifyCaller(items[_upc].ownerID)
+  onlyFarmer()
   {
     // Update the appropriate fields
     items[_upc].itemState = State.Processed;
@@ -190,6 +191,7 @@ contract SupplyChain is Ownable, DistributorRole, ConsumerRole, RetailerRole, Fa
   processed(_upc)
   // Call modifier to verify caller of this function
   verifyCaller(items[_upc].ownerID)
+  onlyFarmer()
   {
     // Update the appropriate fields
     items[_upc].itemState = State.Packed; 
@@ -203,6 +205,7 @@ contract SupplyChain is Ownable, DistributorRole, ConsumerRole, RetailerRole, Fa
   packed(_upc)
   // Call modifier to verify caller of this function
   verifyCaller(items[_upc].ownerID)
+  onlyFarmer()
   {
     // Update the appropriate fields
     Item storage item = items[_upc];
@@ -222,6 +225,7 @@ contract SupplyChain is Ownable, DistributorRole, ConsumerRole, RetailerRole, Fa
   paidEnough(items[_upc].productPrice)
   // Call modifer to send any excess ether back to buyer
   checkValue(_upc)
+  onlyDistributor()
   {
     // Update the appropriate fields - ownerID, distributorID, itemState
     Item storage item = items[_upc];
@@ -241,6 +245,7 @@ contract SupplyChain is Ownable, DistributorRole, ConsumerRole, RetailerRole, Fa
   sold(_upc)
   // Call modifier to verify caller of this function
   verifyCaller(items[_upc].ownerID)
+  onlyDistributor()
   {
     // Update the appropriate fields
     items[_upc].itemState = State.Shipped;
@@ -254,6 +259,7 @@ contract SupplyChain is Ownable, DistributorRole, ConsumerRole, RetailerRole, Fa
   // Call modifier to check if upc has passed previous supply chain stage
   shipped(_upc)
   // Access Control List enforced by calling Smart Contract / DApp
+  onlyRetailer()
   {
     // Update the appropriate fields - ownerID, retailerID, itemState
     Item storage item = items[_upc];
@@ -270,6 +276,7 @@ contract SupplyChain is Ownable, DistributorRole, ConsumerRole, RetailerRole, Fa
   // Call modifier to check if upc has passed previous supply chain stage
   received(_upc)
   // Access Control List enforced by calling Smart Contract / DApp
+  onlyConsumer()
   {
     // Update the appropriate fields - ownerID, consumerID, itemState
     Item storage item = items[_upc];
