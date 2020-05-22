@@ -14,7 +14,7 @@
 
 ## Sequence Diagram
 
-![Sequence Diagram](https://github.com/kostja93/Supply-Chain/blob/master/doc/Supply-Chain-State.png)
+![Sequence Diagram](https://github.com/kostja93/Supply-Chain/blob/master/doc/Supply-Chain-Sequence.png)
 
 ## State Diagram
 
