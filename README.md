@@ -1,6 +1,6 @@
 # Supply Chain
 
-- The contract address: 
+- The contract address: [0x9c3667C506D0e10B9b4C879115Eda4409b324333](https://rinkeby.etherscan.io/address/0x9c3667c506d0e10b9b4c879115eda4409b324333)
 - No external libraries where used, only the internal Roles library
 - IPFS address of DApp: 
 - Truffle v5.1.24 (core: 5.1.24)
